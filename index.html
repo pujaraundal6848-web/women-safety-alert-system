@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Women Safety Alert System</title>
+</head>
+<body>
+
+<h1>Women Safety Alert System</h1>
+
+<button onclick="getLocation()">Send Emergency Alert</button>
+
+<p id="output"></p>
+
+<script>
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    alert("Geolocation not supported");
+  }
+}
+
+function showPosition(position) {
+  document.getElementById("output").innerHTML =
+  "Latitude: " + position.coords.latitude +
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+
+</body>
+</html>

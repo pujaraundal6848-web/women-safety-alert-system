@@ -1,46 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Register</title>
-  <meta charset="UTF-8">
-  <style>
-    body{
-      font-family: Arial;
-      text-align: center;
-      background: #f0f8ff;
-      padding-top: 50px;
-    }
-    input, button{
-      width: 260px;
-      padding: 12px;
-      margin: 10px;
-      font-size: 16px;
-    }
-    button{
-      background: blue;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
+<button onclick="sendAlert()">HELP ME</button>
 
-<h2>Register Page</h2>
+<p id="out"></p>
 
-<input type="text" placeholder="Full Name"><br>
-<input type="email" placeholder="Email"><br>
-<input type="password" placeholder="Password"><br>
-
-<button type="button" onclick="register()">Register</button>
+<audio id="alarm">
+  <source src="https://www.soundjay.com/buttons/sounds/button-10.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-function register(){
-  alert("Registration Successful ✅");
-  window.location.href = "login.html";
+function sendAlert(){
+  // play sound
+  document.getElementById("alarm").play();
+
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(
+      function(pos){
+        let lat = pos.coords.latitude;
+        let lon = pos.coords.longitude;
+
+        let link = "https://www.google.com/maps?q=" + lat + "," + lon;
+
+        document.getElementById("out").innerHTML =
+          "🚨 ALERT SENT<br>" +
+          "Latitude: " + lat + "<br>" +
+          "Longitude: " + lon + "<br>" +
+          "<a href='"+link+"' target='_blank'>View Location</a>";
+
+        alert(
+          "🚨 Emergency Alert Sent!\n\n" +
+          "Latitude: " + lat +
+          "\nLongitude: " + lon
+        );
+      },
+      function(){
+        alert("❌ Please allow location access");
+      }
+    );
+  }else{
+    alert("❌ Location not supported");
+  }
 }
 </script>
-
-</body>
-</html>

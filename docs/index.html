@@ -1,83 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Login</title>
   <meta charset="UTF-8">
-  <title>Women Safety Alert System</title>
   <style>
     body{
       font-family: Arial;
       text-align: center;
-      background: #ffe6ee;
-      padding: 40px;
+      background: #eef;
+      padding-top: 60px;
     }
-    h1{color:#c4003a}
+    input, button{
+      width: 250px;
+      padding: 12px;
+      margin: 10px;
+      font-size: 16px;
+    }
     button{
-      font-size:22px;
-      padding:15px 35px;
-      background:red;
-      color:white;
-      border:none;
-      border-radius:10px;
-    }
-    #out{
-      margin-top:20px;
-      font-size:16px;
-      color:#000;
+      background: green;
+      color: white;
+      border: none;
+      border-radius: 6px;
     }
   </style>
 </head>
 <body>
 
-<h1>🚨 Women Safety Alert System</h1>
+<h2>Login Page</h2>
 
-<button onclick="sendAlert()">HELP ME</button>
+<input type="email" id="email" placeholder="Email"><br>
+<input type="password" id="pass" placeholder="Password"><br>
 
-<div id="out"></div>
-
-<audio id="alarm" autoplay>
-  <source src="https://www.soundjay.com/buttons/sounds/button-10.mp3" type="audio/mpeg">
-</audio>
+<button onclick="login()">Login</button>
 
 <script>
-function sendAlert(){
-  // sound
-  document.getElementById("alarm").play();
-
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(
-      function(pos){
-        let lat = pos.coords.latitude;
-        let lon = pos.coords.longitude;
-
-        let mapLink = "https://www.google.com/maps?q=" + lat + "," + lon;
-
-        document.getElementById("out").innerHTML =
-          "<b>🚨 EMERGENCY ALERT SENT</b><br><br>" +
-          "📍 Latitude: " + lat + "<br>" +
-          "📍 Longitude: " + lon + "<br><br>" +
-          "<a href='" + mapLink + "' target='_blank'>📌 View Live Location</a>";
-
-        alert(
-          "🚨 EMERGENCY ALERT SENT!\n\n" +
-          "Latitude: " + lat + "\n" +
-          "Longitude: " + lon + "\n\n" +
-          "Location police / guardian ला पाठवण्यात आली आहे."
-        );
-      },
-      function(){
-        alert("❌ Location access denied. Please allow location.");
-      }
-    );
-  }else{
-    alert("❌ Geolocation not supported.");
-  }
+function login(){
+  alert("Login Successful ✅");
+  window.location.href = "index.html";
 }
 </script>
-
-<p>
-  <a href="login.html">Login</a> |
-  <a href="register.html">Register</a>
-</p>
 
 </body>
 </html>

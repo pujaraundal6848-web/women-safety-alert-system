@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login</title>
+  <title>Register</title>
   <meta charset="UTF-8">
   <style>
     body{
       font-family: Arial;
       text-align: center;
-      background: #eef;
-      padding-top: 60px;
+      background: #f0f8ff;
+      padding-top: 50px;
     }
     input, button{
-      width: 250px;
+      width: 260px;
       padding: 12px;
       margin: 10px;
       font-size: 16px;
     }
     button{
-      background: green;
+      background: blue;
       color: white;
       border: none;
       border-radius: 6px;
@@ -27,18 +27,18 @@
 </head>
 <body>
 
-<h2>Login Page</h2>
+<h2>Register Page</h2>
 
-<input type="email" id="email" placeholder="Email"><br>
-<input type="password" id="pass" placeholder="Password"><br>
+<input type="text" placeholder="Full Name"><br>
+<input type="email" placeholder="Email"><br>
+<input type="password" placeholder="Password"><br>
 
-<!-- VERY IMPORTANT: type="button" -->
-<button type="button" onclick="login()">Login</button>
+<button type="button" onclick="register()">Register</button>
 
 <script>
-function login(){
-  alert("Login Successful ✅");
-  window.location.href = "index.html";
+function register(){
+  alert("Registration Successful ✅");
+  window.location.href = "login.html";
 }
 </script>
 
